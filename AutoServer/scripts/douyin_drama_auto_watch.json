@@ -1,0 +1,182 @@
+{
+  "script_name": "抖音短剧自动观看",
+  "script_desc": "自动搜索并观看抖音短剧，自动处理广告和切换集数",
+  "target_package": "com.ss.android.ugc.aweme",
+  "version": "1.0.0",
+  "status": 0,
+  "priority": 2,
+  "execution_frequency": "once",
+  "timeout": 1800,
+  "config": {
+    "ad_config": {
+      "ad_keywords": ["广告", "跳过广告", "关闭", "跳过", "立即下载", "查看详情"],
+      "duration_regex": "(\\d+)s|倒计时.*?(\\d+)",
+      "close_keywords": ["跳过", "关闭", "不感兴趣", "跳过广告"],
+      "close_position": ["top_right", "top_left", "bottom_right"],
+      "default_wait": 30
+    },
+    "loop_config": {
+      "loop_type": "count",
+      "loop_count": 100,
+      "loop_interval": 3000
+    },
+    "init_controls": [
+      {
+        "control_id": "click_search",
+        "control_name": "点击搜索按钮",
+        "match_type": "text",
+        "match_value": "搜索",
+        "match_mode": "contains",
+        "operation": "click",
+        "delay_before": 1000,
+        "delay_after": 1000,
+        "retry_count": 3
+      },
+      {
+        "control_id": "input_keyword",
+        "control_name": "输入搜索关键词",
+        "match_type": "class_name",
+        "match_value": "android.widget.EditText",
+        "match_mode": "exact",
+        "operation": "input",
+        "input_text": "#此去蓬山#短剧#热门短剧推荐# 蓬菜松茸菌",
+        "delay_before": 500,
+        "delay_after": 500,
+        "retry_count": 3,
+        "clear_before_input": true
+      },
+      {
+        "control_id": "click_search_button",
+        "control_name": "点击搜索按钮执行搜索",
+        "match_type": "text",
+        "match_value": "搜索",
+        "match_mode": "exact",
+        "operation": "click",
+        "delay_before": 500,
+        "delay_after": 2000,
+        "retry_count": 3
+      },
+      {
+        "control_id": "click_search_result",
+        "control_name": "点击搜索结果位置",
+        "match_type": "position",
+        "match_value": "",
+        "operation": "click",
+        "position": {
+          "x_ratio": 0.494,
+          "y_ratio": 0.504
+        },
+        "delay_before": 2000,
+        "delay_after": 3000,
+        "retry_count": 3
+      },
+      {
+        "control_id": "wait_video_load",
+        "control_name": "等待视频加载",
+        "match_type": "delay",
+        "match_value": "",
+        "operation": "wait",
+        "wait_time": 3000,
+        "delay_before": 0,
+        "delay_after": 0
+      }
+    ],
+    "controls": [
+      {
+        "control_id": "skip_ad_if_exists",
+        "control_name": "检查并跳过广告",
+        "match_type": "text",
+        "match_value": "跳过|跳过广告|关闭",
+        "match_mode": "regex",
+        "operation": "click",
+        "delay_before": 500,
+        "delay_after": 1000,
+        "retry_count": 3,
+        "icon_config": {
+          "position_hint": "top_right"
+        }
+      },
+      {
+        "control_id": "wait_ad_duration",
+        "control_name": "等待广告播放",
+        "match_type": "delay",
+        "match_value": "",
+        "operation": "wait",
+        "wait_time": 30000,
+        "delay_before": 0,
+        "delay_after": 0
+      },
+      {
+        "control_id": "wait_episode_play",
+        "control_name": "等待当前集播放",
+        "match_type": "delay",
+        "match_value": "",
+        "operation": "wait",
+        "wait_time": 60000,
+        "delay_before": 0,
+        "delay_after": 0
+      },
+      {
+        "control_id": "swipe_next_episode",
+        "control_name": "上滑切换下一集",
+        "match_type": "gesture",
+        "match_value": "",
+        "operation": "swipe_up",
+        "swipe_config": {
+          "start_x_ratio": 0.5,
+          "start_y_ratio": 0.7,
+          "end_x_ratio": 0.5,
+          "end_y_ratio": 0.3,
+          "duration": 300
+        },
+        "delay_before": 500,
+        "delay_after": 2000,
+        "retry_count": 1
+      },
+      {
+        "control_id": "return_home",
+        "control_name": "返回抖音首页",
+        "match_type": "gesture",
+        "match_value": "",
+        "operation": "back",
+        "delay_before": 500,
+        "delay_after": 1000,
+        "retry_count": 3
+      }
+    ],
+    "conditions": [
+      {
+        "condition_id": "is_ad_playing",
+        "condition_type": "text_exists",
+        "condition_value": "广告|倒计时|跳过广告",
+        "true_branch": ["skip_ad_if_exists", "wait_ad_duration"],
+        "false_branch": ["wait_episode_play"]
+      },
+      {
+        "condition_id": "video_end_check",
+        "condition_type": "text_exists",
+        "condition_value": "推荐|首页|关注|同城|重新播放|再看一次",
+        "true_branch": ["return_home"],
+        "false_branch": ["swipe_next_episode"]
+      }
+    ],
+    "popup_configs": [
+      {
+        "popup_id": "ad_popup",
+        "match_type": "text",
+        "match_value": "广告|跳过广告|倒计时",
+        "close_match_type": "text",
+        "close_match_value": "跳过|关闭",
+        "priority": 1
+      },
+      {
+        "popup_id": "download_popup",
+        "match_type": "text",
+        "match_value": "立即下载|下载APP",
+        "close_match_type": "text",
+        "close_match_value": "关闭|取消",
+        "priority": 2
+      }
+    ]
+  }
+}

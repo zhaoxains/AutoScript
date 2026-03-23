@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">自动化执行</string>
+    <string name="accessibility_service_description">自动化脚本执行服务，用于识别和操作屏幕控件，执行自动化任务。</string>
+    
+    <string name="login">登录</string>
+    <string name="logout">退出登录</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    
+    <string name="scripts">脚本列表</string>
+    <string name="records">执行记录</string>
+    <string name="logs">执行日志</string>
+    
+    <string name="start">开始执行</string>
+    <string name="stop">停止执行</string>
+    <string name="running">执行中</string>
+    <string name="idle">空闲</string>
+    
+    <string name="permission_required">需要权限</string>
+    <string name="permission_accessibility">无障碍服务</string>
+    <string name="permission_overlay">悬浮窗权限</string>
+    <string name="permission_battery">电池优化</string>
+    
+    <string name="error_network">网络错误</string>
+    <string name="error_unknown">未知错误</string>
+    <string name="error_permission">权限被拒绝</string>
+</resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="8dp">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="节点信息"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#333333"/>
+        
+        <Button
+            android:id="@+id/btnClose"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:text="×"
+            android:textSize="14sp"
+            android:background="#00000000"
+            android:textColor="#666666"/>
+            
+    </LinearLayout>
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="4dp"
+        android:background="#F0F0F0">
+        
+        <TextView
+            android:id="@+id/tvNodeInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="9sp"
+            android:textColor="#333333"
+            android:fontFamily="monospace"
+            android:padding="4dp"/>
+            
+    </ScrollView>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="6dp">
+        
+        <Button
+            android:id="@+id/btnCopy"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_weight="1"
+            android:text="复制"
+            android:textSize="10sp"
+            android:background="#E0E0E0"
+            android:textColor="#333333"
+            android:layout_marginEnd="4dp"/>
+        
+        <Button
+            android:id="@+id/btnClick"
+            android:layout_width="0dp"
+            android:layout_height="28dp"
+            android:layout_weight="1"
+            android:text="点击"
+            android:textSize="10sp"
+            android:background="#2196F3"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="4dp"/>
+            
+    </LinearLayout>
+    
+</LinearLayout>
