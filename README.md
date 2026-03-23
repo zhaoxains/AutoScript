@@ -223,7 +223,7 @@ autoscript/
 
 ### APP 下载
 
-下载地址: [app-debug.apk](AutoApp/app/build/outputs/apk/debug/app-debug.apk)
+下载地址: [app-debug.apk](Ascreenshots/app-debug.apk)
 
 ### 后台演示
 
