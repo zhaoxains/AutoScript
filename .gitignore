@@ -131,3 +131,5 @@ error.log
 # Project specific
 AutoServer.zip
 *.sql.bak
+# Allow screenshots
+# *.png

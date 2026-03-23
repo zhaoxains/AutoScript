@@ -219,6 +219,32 @@ autoscript/
 
 ---
 
+## 📱 演示
+
+### APP 下载
+
+下载地址: [app-debug.apk](AutoApp/app/build/outputs/apk/debug/app-debug.apk)
+
+### 后台演示
+
+演示地址: [https://auto.cptb.cn/admin](https://auto.cptb.cn/admin)
+
+---
+
+## 💰 赞助支持
+
+如果这个项目对您有帮助，欢迎赞助支持开发！
+
+### 微信支付
+
+![微信支付](screenshots/wechat_pay.png)
+
+### 支付宝
+
+![支付宝](screenshots/alipay.png)
+
+---
+
 ## 📞 联系方式
 
 - Issue: [GitHub Issues](https://github.com/zhaoxains/autoscript/issues)
